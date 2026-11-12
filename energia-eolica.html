@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Energía eólica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="energia-eolica.css">
+</head>
+<body>
+<div class="deck"><div class="stage" id="stage">
+
+<!-- 1 PORTADA -->
+<section class="slide cover"><div class="bg"></div><div class="t1">Energía</div><div class="t2">Eólica</div></section>
+
+<!-- 2 FLUJO -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Del viento <em>a la electricidad</em></h2>
+<div class="flow abs" style="left:84px;top:230px;width:1112px">
+<div class="node"><div class="num">01</div><svg viewBox="0 0 64 64"><path class="wind" d="M6 22h34a7 7 0 1 0-7-7M6 34h46a7 7 0 1 1-7 7M6 46h24" stroke="#0033ff" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>Viento</b><small>energía cinética</small></div>
+<div class="node"><div class="num">02</div><svg viewBox="0 0 64 64"><g transform="translate(32 32)"><g class="sp"><ellipse cy="-17" rx="5" ry="15" fill="#14276b"/><ellipse cy="-17" rx="5" ry="15" fill="#14276b" transform="rotate(120)"/><ellipse cy="-17" rx="5" ry="15" fill="#14276b" transform="rotate(240)"/></g><circle r="5" fill="#0033ff"/></g></svg><b>Aspas y rotor</b><small>aspas + buje</small></div>
+<div class="node"><div class="num">03</div><svg viewBox="0 0 64 64"><g transform="translate(24 38)"><g class="sp m"><circle r="15" fill="none" stroke="#14276b" stroke-width="8" stroke-dasharray="5 4.7"/></g><circle r="3" fill="#0033ff"/></g><g transform="translate(47 19)"><g class="sp f r"><circle r="9" fill="none" stroke="#0033ff" stroke-width="6" stroke-dasharray="4 3.5"/></g></g></svg><b>Multiplicadora</b><small>engranajes: más rpm</small></div>
+<div class="node"><div class="num">04</div><svg viewBox="0 0 64 64"><rect x="6" y="22" width="20" height="20" fill="#0033ff"/><rect x="26" y="22" width="20" height="20" fill="#8b3a62"/><path d="M50 14c9 0 9 9 0 9s-9 9 0 9 9 9 0 9 -9 9 0 9" stroke="#c2703d" stroke-width="4" fill="none"/></svg><b>Generador</b><small>imanes y bobinas</small></div>
+<div class="node"><div class="num">05</div><svg viewBox="0 0 64 64"><path d="M3 32C13 2 23 2 32 32S51 62 61 32" stroke="#0033ff" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>Corriente alterna</b><small>onda senoidal</small></div>
+<div class="node"><div class="num">06</div><svg viewBox="0 0 64 64"><path d="M18 12v40l26-20z" fill="#14276b"/><path d="M48 12v40" stroke="#0033ff" stroke-width="6"/></svg><b>Rectificador</b><small>continua · o a la red</small></div>
+</div>
+</section>
+
+<!-- 3 MILES DE AÑOS -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Una energía de <em>miles de años</em></h2>
+<div class="rows abs" style="left:84px;top:210px;width:620px;gap:22px">
+<div class="card"><div class="num">01</div><h3>Barcos y molinos</h3><p>El viento ya movía barcos y molinos que molían grano.</p></div>
+<div class="card"><div class="num">02</div><h3>Campos de aerogeneradores</h3><p>Hoy hay muchos en Argentina.</p></div>
+<div class="card"><div class="num">03</div><h3>Offshore</h3><p>Aerogeneradores instalados directamente en el mar.</p></div>
+</div>
+<div class="img abs" style="left:760px;top:196px;width:190px;height:420px;background-image:var(--mol)"></div>
+<div class="img abs" style="left:970px;top:196px;width:226px;height:200px;background-image:var(--ship)"></div>
+<div class="img abs" style="left:970px;top:416px;width:226px;height:200px;background-image:var(--sun)"></div>
+</section>
+
+<!-- 4 ALTURA -->
+<section class="slide height-slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>En altura, <em>lejos de los obstáculos</em></h2>
+<div class="card abs height-diagram" style="left:84px;top:196px;width:1112px;height:400px;padding:0;overflow:hidden">
+<svg viewBox="0 0 1112 400" width="1112" height="400">
+<rect x="0" y="340" width="1112" height="60" fill="#e3e9f8"/>
+<rect x="170" y="282" width="90" height="58" fill="#14276b"/><path d="M158 284L215 240L272 284Z" fill="#0a1530"/>
+<circle cx="338" cy="300" r="34" fill="#6f8fe8"/><rect x="334" y="326" width="8" height="14" fill="#14276b"/>
+<circle cx="408" cy="308" r="26" fill="#6f8fe8"/><rect x="404" y="328" width="8" height="12" fill="#14276b"/>
+<path class="wind" d="M20 300H150" stroke="#b79bb8" stroke-width="5" fill="none"/><path class="wind" d="M20 262H150" stroke="#b79bb8" stroke-width="5" fill="none"/>
+<text x="30" y="378" class="sm">Casas y árboles interfieren con el paso del viento</text>
+<path class="wind" d="M470 70H700" stroke="#0033ff" stroke-width="5" fill="none"/><path class="wind" d="M470 120H700" stroke="#0033ff" stroke-width="5" fill="none"/><path class="wind" d="M470 170H700" stroke="#0033ff" stroke-width="5" fill="none"/>
+<polygon points="792,340 810,340 805,134 797,134" fill="#14276b"/><rect x="788" y="124" width="40" height="18" rx="5" fill="#0a1530"/>
+<g transform="translate(786 133)"><g class="sp"><ellipse cy="-52" rx="8" ry="52" fill="#14276b"/><ellipse cy="-52" rx="8" ry="52" fill="#14276b" transform="rotate(120)"/><ellipse cy="-52" rx="8" ry="52" fill="#14276b" transform="rotate(240)"/></g><circle r="9" fill="#0033ff"/></g>
+<text x="470" y="40" class="sm">El viento llega a las aspas y provoca movimiento</text>
+</svg></div>
+<div class="height-mobile">
+<article class="height-mobile__step">
+<svg viewBox="0 0 320 110" aria-hidden="true">
+<rect x="0" y="92" width="320" height="18" fill="#e3e9f8"/>
+<rect x="48" y="54" width="52" height="38" fill="#14276b"/><path d="M40 55L74 28L108 55Z" fill="#0a1530"/>
+<circle cx="142" cy="68" r="20" fill="#6f8fe8"/><rect x="139" y="85" width="6" height="7" fill="#14276b"/>
+<circle cx="190" cy="72" r="16" fill="#6f8fe8"/><rect x="187" y="85" width="6" height="7" fill="#14276b"/>
+<path d="M8 45H40M8 70H40" stroke="#b79bb8" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 7"/>
+</svg>
+<p>Las casas y los árboles frenan el viento cerca del suelo.</p>
+</article>
+<article class="height-mobile__step">
+<svg viewBox="0 0 320 150" aria-hidden="true">
+<path d="M18 45H135M18 76H135M18 107H135" stroke="#0033ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8"/>
+<path d="M241 140L246 55H254L259 140Z" fill="#14276b"/>
+<rect x="235" y="48" width="30" height="14" rx="4" fill="#0a1530"/>
+<g transform="translate(250 55)" fill="#14276b">
+<path d="M-4 -5C-8 -55 0 -70 4 -70C8 -70 8 -25 4 -5Z"/>
+<path d="M-4 -5C-8 -55 0 -70 4 -70C8 -70 8 -25 4 -5Z" transform="rotate(120)"/>
+<path d="M-4 -5C-8 -55 0 -70 4 -70C8 -70 8 -25 4 -5Z" transform="rotate(240)"/>
+</g>
+<circle cx="250" cy="55" r="6" fill="#0033ff"/>
+</svg>
+<p>A mayor altura, el viento llega a las aspas y las hace girar.</p>
+</article>
+</div>
+</section>
+
+<!-- 5 ANATOMIA -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Del viento <em>al generador</em></h2>
+<div class="anatomy-flow abs" style="left:84px;top:190px;width:1112px">
+<article class="anatomy-step">
+<span class="anatomy-step__number">01</span>
+<svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g class="sp"><path d="M-5-5C-10-25-3-31 0-31S10-25 5-5Z" fill="#14276b"/><path d="M-5-5C-10-25-3-31 0-31S10-25 5-5Z" fill="#14276b" transform="rotate(120)"/><path d="M-5-5C-10-25-3-31 0-31S10-25 5-5Z" fill="#14276b" transform="rotate(240)"/></g><circle r="6" fill="#0033ff"/></g></svg>
+<div><h3>Rotor</h3><p>El viento hace girar las aspas y el buje. El movimiento comienza lento y con mucha fuerza.</p></div>
+</article>
+<article class="anatomy-step">
+<span class="anatomy-step__number">02</span>
+<svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(23 39)"><g class="sp m r"><circle r="17" fill="none" stroke="#14276b" stroke-width="9" stroke-dasharray="6 5"/></g><circle r="3" fill="#0033ff"/></g><g transform="translate(47 19)"><g class="sp f"><circle r="10" fill="none" stroke="#0033ff" stroke-width="6" stroke-dasharray="4 3"/></g></g></svg>
+<div><h3>Caja multiplicadora</h3><p>Los engranajes transmiten el giro y aumentan la velocidad: suben las rpm y disminuye el torque.</p></div>
+</article>
+<article class="anatomy-step">
+<span class="anatomy-step__number">03</span>
+<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="9" y="20" width="20" height="24" rx="3" fill="#0033ff"/><rect x="29" y="20" width="20" height="24" rx="3" fill="#8b3a62"/><path d="M51 15v34" stroke="#c2703d" stroke-width="4" stroke-linecap="round"/><path d="M8 52h48" stroke="#14276b" stroke-width="3" stroke-linecap="round"/></svg>
+<div><h3>Generador</h3><p>Los imanes giran frente a bobinas de cobre y convierten el movimiento en energía eléctrica.</p></div>
+</article>
+</div>
+</section>
+
+<!-- 6 GENERADOR -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Dentro <em>del generador</em></h2>
+<div class="card abs" style="left:84px;top:190px;width:640px;height:380px;padding:0">
+<svg viewBox="0 0 640 380" width="640" height="380">
+<g fill="none" stroke="#c2703d" stroke-width="6"><ellipse cx="210" cy="190" rx="38" ry="110"/><ellipse cy="190" cx="250" rx="38" ry="110"/><ellipse cy="190" cx="290" rx="38" ry="110"/><ellipse cy="190" cx="330" rx="38" ry="110"/><ellipse cy="190" cx="370" rx="38" ry="110"/><ellipse cy="190" cx="410" rx="38" ry="110"/></g>
+<g transform="translate(310 190)"><g class="sp m"><rect x="-70" y="-17" width="70" height="34" fill="#0033ff"/><rect x="0" y="-17" width="70" height="34" fill="#8b3a62"/><text x="-35" y="7" text-anchor="middle" fill="#fff" font-size="18" font-family="Inter,sans-serif">N</text><text x="35" y="7" text-anchor="middle" fill="#fff" font-size="18" font-family="Inter,sans-serif">S</text></g></g>
+<text x="320" y="345" text-anchor="middle" class="sm">imanes que giran · bobina de cobre · el flujo magnético cambia</text>
+</svg></div>
+<div class="card abs" style="left:750px;top:190px;width:446px;height:380px;padding:0">
+<svg viewBox="0 0 446 380" width="446" height="380">
+<rect x="70" y="80" width="80" height="250" rx="8" fill="#0033ff"/><rect x="230" y="280" width="80" height="50" rx="8" fill="#6f8fe8"/>
+<path d="M330 80V280M322 80H338M322 280H338" stroke="#8b3a62" stroke-width="4" fill="none"/>
+<text x="355" y="190" class="lb" fill="#8b3a62" style="fill:#8b3a62;font-size:44px">4 V</text>
+<text x="110" y="358" text-anchor="middle" class="sm">A · 5 V</text><text x="270" y="358" text-anchor="middle" class="sm">B · 1 V</text>
+<text x="223" y="48" text-anchor="middle" class="sm">diferencia de potencial</text>
+</svg></div>
+<div class="steps abs" style="left:84px;top:595px;width:1112px"><span><b>01</b>Giran los imanes</span><i>→</i><span><b>02</b>Cambia el flujo magnético</span><i>→</i><span><b>03</b>Se induce una tensión</span><i>→</i><span><b>04</b>Circuito cerrado: corriente</span></div>
+</section>
+
+<!-- 7 ALTERNA -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Corriente <em>alterna</em></h2>
+<div class="card abs" style="left:84px;top:190px;width:740px;height:400px;padding:0">
+<svg viewBox="0 0 740 400" width="740" height="400">
+<text x="30" y="44" class="lb">Menos rpm</text><path class="ax" d="M30 120H710"/><path class="sw" data-x="30" data-y="120" data-w="680" data-c="2" data-a="52"/>
+<text x="30" y="244" class="lb">Más rpm</text><path class="ax" d="M30 316H710"/><path class="sw" data-x="30" data-y="316" data-w="680" data-c="5" data-a="52"/>
+<text x="716" y="74" class="sm" text-anchor="end">+</text><text x="716" y="176" class="sm" text-anchor="end">−</text>
+<text x="710" y="390" class="sm" text-anchor="end">tiempo →</text>
+</svg></div>
+<div class="card abs" style="left:850px;top:190px;width:346px;height:400px;padding:0">
+<svg viewBox="0 0 346 400" width="346" height="400">
+<rect x="40" y="90" width="266" height="170" rx="24" fill="none" stroke="#14276b" stroke-width="7"/>
+<g fill="#6f8fe8"><circle class="sh" cx="110" cy="90" r="10"/><circle class="sh" cx="173" cy="90" r="10"/><circle class="sh" cx="236" cy="90" r="10"/><circle class="sh" cx="110" cy="260" r="10"/><circle class="sh" cx="173" cy="260" r="10"/><circle class="sh" cx="236" cy="260" r="10"/></g>
+<text x="173" y="330" text-anchor="middle" class="lb">+ → − → +</text><text x="173" y="358" text-anchor="middle" class="sm">los electrones van y vienen</text>
+</svg></div>
+</section>
+
+<!-- 8 RECTIFICADOR -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>De alterna <em>a su destino</em></h2>
+<div class="card abs rectifier-card" style="left:84px;top:190px;width:1112px;height:410px;padding:0">
+<svg viewBox="0 0 1112 410" width="1112" height="410">
+<path class="sw" data-x="50" data-y="110" data-w="190" data-c="2" data-a="34"/><path class="ar" d="M260 110H320"/>
+<rect x="330" y="60" width="210" height="100" rx="16" fill="#14276b"/><text x="435" y="119" text-anchor="middle" class="lb" style="fill:#fff">Rectificador</text><path class="ar" d="M560 110H620"/>
+<path d="M630 110H770" stroke="#0033ff" stroke-width="6" stroke-linecap="round"/><text x="700" y="82" text-anchor="middle" class="sm">corriente continua</text>
+<g transform="translate(850 80)"><circle cx="20" cy="22" r="22" fill="#f2e6ee" stroke="#14276b" stroke-width="4"/><rect x="10" y="48" width="20" height="10" rx="3" fill="#14276b"/></g><text x="870" y="170" text-anchor="middle" class="sm">luces</text>
+<g transform="translate(975 82)"><rect x="0" y="8" width="64" height="40" rx="6" fill="none" stroke="#14276b" stroke-width="4"/><rect x="64" y="20" width="8" height="16" fill="#14276b"/><rect x="8" y="16" width="14" height="24" fill="#0033ff"/><rect x="26" y="16" width="14" height="24" fill="#0033ff"/></g><text x="1010" y="170" text-anchor="middle" class="sm">baterías</text>
+<path class="sw" data-x="50" data-y="300" data-w="190" data-c="2" data-a="34"/><path class="ar" d="M260 300H320"/>
+<rect x="330" y="250" width="210" height="100" rx="16" fill="#8b3a62"/><text x="435" y="309" text-anchor="middle" class="lb" style="fill:#fff">Se acondiciona</text><path class="ar" d="M560 300H620"/>
+<g transform="translate(690 262)" stroke="#14276b" stroke-width="5" fill="none" stroke-linecap="round"><path d="M0 76L20 0L40 76M7 46H33M12 22H28"/></g><text x="710" y="362" text-anchor="middle" class="sm">red eléctrica</text>
+</svg></div>
+<div class="card abs rectifier-mobile" aria-label="Flujo de corriente alterna hacia los equipos o la red">
+<div class="rectifier-source">
+  <span>Corriente alterna</span>
+  <svg viewBox="0 0 120 40" aria-hidden="true"><path d="M2 20C12 0 22 0 32 20S52 40 62 20 82 0 92 20 112 40 118 20" /></svg>
+</div>
+<div class="rectifier-branches">
+  <article class="rectifier-route">
+    <h3>Para usar o almacenar</h3>
+    <div class="rectifier-block">Rectificador</div>
+    <span class="rectifier-arrow" aria-hidden="true">↓</span>
+    <div class="rectifier-output">Corriente continua</div>
+    <span class="rectifier-arrow" aria-hidden="true">↓</span>
+    <div class="rectifier-devices">
+      <div><span class="device-icon light-icon" aria-hidden="true">✦</span>Luces</div>
+      <div><span class="device-icon battery-icon" aria-hidden="true">▰</span>Baterías</div>
+    </div>
+  </article>
+  <article class="rectifier-route">
+    <h3>Para entregar a la red</h3>
+    <div class="rectifier-block rectifier-block--alternate">Se acondiciona</div>
+    <span class="rectifier-arrow" aria-hidden="true">↓</span>
+    <div class="rectifier-output rectifier-output--grid"><span class="grid-icon" aria-hidden="true">ϟ</span>Red eléctrica</div>
+  </article>
+</div>
+</div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Ventajas de la <em>energía eólica</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:230px 230px">
+<div class="card"><h3>Renovable</h3><p>El viento no se agota y está disponible en gran parte del planeta. Es autóctona: favorece la independencia energética.</p></div>
+<div class="card"><h3>Limpia</h3><p>No contamina directamente al producir electricidad.</p></div>
+<div class="card"><h3>Menos fósiles</h3><p>Reduce el uso de petróleo y carbón.</p></div>
+<div class="card"><h3>Genera empleo</h3><p>Crea puestos de trabajo y desarrollo local.</p></div>
+<div class="card"><h3>Mantenimiento</h3><p>Necesita poco mantenimiento y sus instalaciones tienen una vida útil prolongada.</p></div>
+<div class="img" style="background-image:var(--sun)"></div>
+</div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Desafíos de la <em>energía eólica</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:230px 230px">
+<div class="card"><h3 style="color:var(--plum)">Depende del viento</h3><p>Solo genera donde y cuando sopla: los parques deben ir donde el viento predomina.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Costo inicial</h3><p>La instalación es costosa.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Espacio</h3><p>Necesita bastante espacio.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Almacenamiento</h3><p>Es difícil almacenar la electricidad.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Ruido</h3><p>Puede generar ruido.</p></div>
+<img class="img" src="Images/cloudTurbines.jpg" alt="Aerogeneradores bajo un cielo nublado">
+</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Impacto <em>ambiental</em></h2>
+<div class="rows abs" style="left:84px;top:200px;width:660px;gap:22px">
+<div class="row"><div class="num">01</div><div>Puede afectar a aves y murciélagos.</div></div>
+<div class="row"><div class="num">02</div><div>Los parques pueden modificar el paisaje.</div></div>
+<div class="row"><div class="num">03</div><div>Fabricar y transportar los equipos genera contaminación.</div></div>
+<div class="row"><div class="num">04</div><div>Algunas partes son difíciles de reciclar.</div></div>
+<p style="font-size:16px;line-height:1.5;color:var(--muted);font-style:italic;margin-top:6px">Repsol: las palas pueden repararse o reutilizarse como materia prima, y los parques se instalan en zonas despobladas tras un estudio.</p>
+</div>
+<div class="img abs" style="left:800px;top:110px;width:396px;height:500px;background-image:var(--tri)"></div>
+<div class="abs" style="left:800px;top:470px;width:396px;height:140px;border-radius:0 0 20px 20px;background:linear-gradient(transparent,rgba(10,21,48,.9));display:flex;align-items:flex-end;padding:22px 26px;font-family:var(--serif);font-size:28px;line-height:1.15;color:#fff;font-style:italic">Por eso es clave estudiar dónde se instalan los parques</div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Argentina <em>en números</em></h2>
+<p class="abs" style="left:84px;top:178px;width:1000px;font-size:20px;line-height:1.5;color:#1d2746">Referente regional en energía eólica: sus parques superan la media mundial gracias a la estabilidad de sus vientos.</p>
+<div class="grid abs" style="left:84px;top:268px;width:1112px;grid-template-columns:repeat(3,1fr)">
+<div class="card dark stat" style="padding:30px"><b>68</b><p>parques eólicos en operación comercial</p></div>
+<div class="card dark stat" style="padding:30px"><b>+4.200</b><p>MW generados: la tecnología líder de la matriz renovable</p></div>
+<div class="card dark stat" style="padding:30px"><b>40–50%</b><p>factor de capacidad (promedio mundial: ~35%), con picos de más del 80% en primavera-verano</p></div>
+</div>
+<div class="abs" style="left:84px;top:552px;display:flex;gap:14px;align-items:center"><span style="font-family:var(--serif);font-size:26px;font-weight:400;color:var(--navy2);margin-right:10px">Provincias principales</span><span class="chip">Chubut</span><span class="chip">Buenos Aires</span><span class="chip">Santa Cruz</span><span class="chip">La Rioja</span></div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Los seis parques <em>principales</em></h2>
+<div class="card abs" style="left:84px;top:190px;width:720px;padding:34px 30px"><div class="bars">
+<div class="bar"><span>Aluar · Puerto Madryn, Chubut</span><i style="--w:100%"></i><b>582</b></div>
+<div class="bar"><span>Mataco–San Jorge · Bs. As.</span><i style="--w:47.4%"></i><b>276</b></div>
+<div class="bar"><span>Puerto Madryn–Genneia · Chubut</span><i style="--w:38.1%"></i><b>222</b></div>
+<div class="bar"><span>Los Teros · Azul, Bs. As.</span><i style="--w:30%"></i><b>175</b></div>
+<div class="bar"><span>Arauco · La Rioja</span><i style="--w:25.8%"></i><b>150</b></div>
+<div class="bar"><span>Bicentenario · Santa Cruz</span><i style="--w:21.6%"></i><b>126</b></div>
+</div><p style="margin-top:18px;font-size:14px;color:var(--muted)">Potencia en MW</p></div>
+<img class="img abs" src="Images/Parks/aluar2.webp" alt="Aerogeneradores del parque eólico Aluar" style="left:840px;top:190px;width:356px;height:290px">
+<p class="abs" style="left:840px;top:496px;width:356px;font-size:16px;line-height:1.5;color:#1d2746">Aluar: el complejo más grande del país, destinado a abastecer la producción de aluminio.</p>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Fichas <em>de los parques</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:215px 215px">
+<div class="card"><h3>Aluar</h3><div class="mw">582 MW</div><p>Puerto Madryn, Chubut. El más grande del país; abastece la producción de aluminio.</p></div>
+<div class="card"><h3>Mataco–San Jorge</h3><div class="mw">276 MW</div><p>Tornquist, Buenos Aires. El de mayor capacidad de la provincia.</p></div>
+<div class="card"><h3>Puerto Madryn–Genneia</h3><div class="mw">222 MW</div><p>Chubut.</p></div>
+<div class="card"><h3>Los Teros</h3><div class="mw">175 MW</div><p>Azul, Buenos Aires.</p></div>
+<div class="card"><h3>Arauco</h3><div class="mw">150 MW</div><p>La Rioja. Desarrollador del NOA; hoy suma capacidad híbrida con energía solar.</p></div>
+<div class="card"><h3>Bicentenario</h3><div class="mw">126 MW</div><p>Jaramillo, Santa Cruz.</p></div>
+</div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Galería de parques <em>eólicos</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);height:420px">
+<figure class="park-card"><img class="img" src="Images/Parks/parqueAluar.webp" alt="Aerogeneradores del Parque Eólico Aluar, en Puerto Madryn"><figcaption>Parque Eólico Aluar</figcaption></figure>
+<figure class="park-card"><img class="img" src="Images/Parks/matacoSanJorge.webp" alt="Aerogeneradores del Parque Eólico Mataco–San Jorge, en Tornquist"><figcaption>Parque Eólico Mataco–San Jorge</figcaption></figure>
+<figure class="park-card"><img class="img" src="Images/Parks/Los Teros.jpg" alt="Aerogeneradores del Parque Eólico Los Teros, en Azul"><figcaption>Parque Eólico Los Teros</figcaption></figure>
+</div>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Del viento <em>a la red</em></h2>
+<div class="rows abs" style="left:84px;top:196px;width:760px;gap:26px">
+<div class="row"><div class="num">01</div><div>Argentina tiene un recurso eólico excepcional y una fuerte inversión privada.</div></div>
+<div class="row"><div class="num">02</div><div>Pero el SADI (Sistema Argentino de Interconexión) no tiene capacidad suficiente para absorber y transportar toda esa energía.</div></div>
+<div class="row"><div class="num">03</div><div>Solución: la «era del almacenamiento a gran escala». Baterías de alta capacidad guardan el excedente cuando la red se satura y lo liberan cuando la demanda se dispara.</div></div>
+</div>
+<div class="img abs" style="left:900px;top:110px;width:296px;height:500px;background-image:var(--cap)"></div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+<div class="eyebrow">4 · Historia en Argentina</div>
+<h2>Una historia <em>en seis hitos</em></h2>
+<p class="abs" style="left:84px;top:200px;width:1112px;text-align:center;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--navy2)">Años 80 y 90: nacen los primeros proyectos</p>
+<div class="tl abs" style="left:84px;top:290px;width:1112px">
+<div class="ev"><div class="y">1994</div><div class="d"></div><strong>Antonio Morán</strong><p>Parque en Chubut: el primero comercial del país.</p></div>
+<div class="ev l"><div class="y">1998</div><div class="d"></div><strong>Ley 25.019</strong><p>Primera ley de fomento, frenada por la crisis de 2001.</p></div>
+<div class="ev l"><div class="y">2006</div><div class="d"></div><strong>Ley 26.190</strong><p>Fijó la meta inicial del 8% de energía renovable.</p></div>
+<div class="ev"><div class="y">2009</div><div class="d"></div><strong>Plan GENREN</strong><p>Primer intento del Estado de licitar renovables a gran escala; resultados limitados.</p></div>
+<div class="ev l"><div class="y">2015</div><div class="d"></div><strong>Ley 27.191</strong><p>Creó el fondo FODER y la meta obligatoria del 20% para 2025.</p></div>
+<div class="ev"><div class="y">2016</div><div class="d"></div><strong>RenovAr</strong><p>El gran punto de inflexión: licitaciones internacionales con inversiones millonarias.</p></div>
+</div>
+<div class="legend abs" style="left:84px;top:600px;width:1112px;justify-content:center"><span><i></i>Hitos</span><span><i class="l"></i>Leyes</span></div>
+</section>
+
+<!-- 15 -->
+<section class="slide">
+<div class="eyebrow">4 · Historia en Argentina</div>
+<h2>Infraestructura y <em>desafíos actuales</em></h2>
+<div class="img abs" style="left:84px;top:190px;width:300px;height:430px;background-image:var(--mol)"></div>
+<div class="rows abs" style="left:430px;top:196px;width:766px;gap:24px">
+<div class="row"><div class="num">01</div><div>Tecnología y crecimiento: se pasó de molinos pequeños a gigantescos aerogeneradores modernos.</div></div>
+<div class="row"><div class="num">02</div><div>La Patagonia tiene los mejores vientos, pero faltan redes de alta tensión.</div></div>
+<div class="row"><div class="num">03</div><div>Por eso hoy lidera Buenos Aires, cerca de Bahía Blanca y de los centros de consumo.</div></div>
+<div class="row"><div class="num">04</div><div>Desafío: ampliar las líneas de transporte eléctrico para evacuar toda la energía que se produce.</div></div>
+</div>
+</section>
+
+<!-- 16 -->
+<section class="slide cover"><div class="bg"></div><div class="t2">Gracias</div><div class="slide-footer">Estudiantes: Bernal Santino, Montaño Bautista, Arcuri Lucas y Berraquero Tiziano.<br>No sean malos, sígannos en IG: <a href="https://www.instagram.com/bernalsantt/" target="_blank" rel="noopener noreferrer">@bernalsantt</a>, <a href="https://www.instagram.com/bauurivarola/" target="_blank" rel="noopener noreferrer">@bauurivarola</a>, <a href="https://www.instagram.com/lucassarcuri/" target="_blank" rel="noopener noreferrer">@lucassarcuri</a> y <a href="https://www.instagram.com/berraquerotiziano/" target="_blank" rel="noopener noreferrer">@berraquerotiziano</a>.</div></section>
+
+</div></div>
+<div class="nav"><button id="prev" aria-label="Anterior">←</button><span id="ct"></span><button id="next" aria-label="Siguiente">→</button></div>
+<script src="energia-eolica.js" defer></script>
+</body>
+</html>
