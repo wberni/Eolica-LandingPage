@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Energía eólica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2e6ee;--card:#fff;--navy:#0a1530;--navy2:#14276b;--blue:#0033ff;--mid:#6f8fe8;--mauve:#b79bb8;--plum:#8b3a62;--muted:#5b6785;--ink:#0a1530;
+--off:url("Images/cover-background.jpg");--tri:url("Images/environment-impact.jpg");--cap:url("Images/wind-farm.jpg");--mol:url("Images/windmill.jpg");--ship:url("Images/sailboat.jpg");--sun:url("Images/solar-panels.jpg");
+--serif:"Instrument Serif",Georgia,"Times New Roman",serif;--sans:"Inter","Helvetica Neue",Arial,sans-serif;--script:var(--serif);--didone:var(--sans)}
+@media (prefers-color-scheme:dark){:root{--bg:#f2e6ee;--navy:#0a1530}}
+:root[data-theme="dark"]{--bg:#f2e6ee}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--navy);overflow:hidden;font-family:var(--sans);color:var(--ink)}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.deck{position:fixed;inset:0;display:grid;place-items:center}
+.stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center;overflow:hidden;background:var(--bg);border-radius:6px}
+.slide{position:absolute;inset:0;padding:70px 84px 60px;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s}
+.slide.on{opacity:1;visibility:visible}
+.slide>*{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.slide.on>*{opacity:1;transform:none}
+.slide.on>*:nth-child(2){transition-delay:.1s}.slide.on>*:nth-child(3){transition-delay:.2s}.slide.on>*:nth-child(4){transition-delay:.3s}.slide.on>*:nth-child(5){transition-delay:.4s}.slide.on>*:nth-child(6){transition-delay:.5s}
+.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:600}
+h2{font-family:var(--serif);font-weight:400;font-size:58px;line-height:1.05;margin:10px 0 30px;color:var(--navy)}
+h2 em{font-style:italic;color:var(--blue)}
+.abs{position:absolute}
+.card{background:var(--card);border-radius:20px;padding:24px 26px;box-shadow:0 10px 30px -18px rgba(10,21,48,.45)}
+.card h3{font-family:var(--serif);font-weight:400;font-size:27px;color:var(--navy2);margin-bottom:8px}
+.card p{font-size:17px;line-height:1.5;color:#26304d}
+.dark{background:var(--navy2);color:#fff}.dark p,.dark h3{color:#fff}
+.num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:34px;color:var(--blue);line-height:1}
+.img{background-size:cover;background-position:center;border-radius:20px;object-fit:cover}
+.grid{display:grid;gap:20px}
+.grid .img{width:100%;height:100%}
+.rows{display:grid;gap:20px}
+.row{display:grid;grid-template-columns:62px 1fr;align-items:center;font-size:20px;line-height:1.45;color:#1d2746}
+ul.b{list-style:none;display:grid;gap:18px}
+ul.b li{font-size:20px;line-height:1.5;padding-left:26px;position:relative;color:#1d2746}
+ul.b li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--blue)}
+.band{background:var(--navy);color:#fff;border-radius:16px;padding:16px 26px;font-size:19px;text-align:center;letter-spacing:.01em}
+.ph{border:2px dashed var(--muted);border-radius:20px;background:#fff;display:grid;place-items:center;text-align:center;color:var(--navy2);font-size:17px;line-height:1.5;cursor:pointer;background-size:cover;background-position:center;padding:16px}
+.ph small{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.ph.has{border-style:solid;border-color:transparent}.ph.has span{display:none}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:84px;line-height:1;color:var(--mid)}
+.stat p{margin-top:12px;font-size:18px;line-height:1.45;color:#e8eefc}
+.chip{border:1.5px solid var(--blue);border-radius:99px;padding:9px 22px;font-weight:500;color:var(--navy2);background:#fff;font-size:18px}
+.mw{font-family:var(--serif);font-weight:400;font-size:46px;color:var(--plum);line-height:1;margin:6px 0 8px}
+.bars{display:grid;gap:14px}
+.bar{display:grid;grid-template-columns:250px 1fr 56px;gap:14px;align-items:center;font-size:16px;color:#1d2746}
+.bar i{display:block;height:26px;border-radius:7px;background:var(--blue);transform-origin:left;transform:scaleX(0);width:var(--w)}
+.slide.on .bar i{transform:scaleX(1)}
+.bar b{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--navy2)}
+.tl{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.ev::before{content:"";position:absolute;left:0;right:0;top:82px;height:3px;background:var(--mauve)}.ev:first-child::before{left:50%}.ev:last-child::before{right:50%}.ev{padding:0 8px}
+.ev{text-align:center;position:relative}
+.ev .y{font-family:var(--serif);font-weight:400;font-size:46px;color:var(--navy2)}
+.ev .d{width:22px;height:22px;border-radius:50%;margin:16px auto 20px;background:var(--blue);border:4px solid var(--bg);position:relative;z-index:1;box-shadow:0 0 0 2px var(--blue)}
+.ev.l .d{background:var(--mauve);box-shadow:0 0 0 2px var(--mauve)}
+.ev p{font-size:16px;line-height:1.45;color:#1d2746}
+.ev strong{display:block;font-family:var(--serif);font-size:22px;color:var(--navy2);margin-bottom:4px}
+.legend{display:flex;gap:26px;font-size:15px;color:var(--muted);margin-top:34px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:8px;background:var(--blue)}.legend i.l{background:var(--mauve)}
+.cover{padding:0;background:var(--navy)}
+.cover .bg{position:absolute;inset:0;background:linear-gradient(rgba(10,21,48,.45),rgba(10,21,48,.6)),var(--off);background-size:cover;background-position:center;border-radius:0;opacity:1}
+.cover .t1{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:var(--serif);font-size:64px;color:var(--bg)}
+.cover .t2{position:absolute;left:0;right:0;top:230px;text-align:center;font-family:var(--serif);font-style:italic;font-size:250px;line-height:1.1;color:var(--bg)}
+.nav{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;align-items:center;gap:18px;opacity:.75;transition:opacity .3s;z-index:5}
+body:hover .nav{opacity:1}
+.nav button{background:rgba(10,21,48,.68);color:#fff;border:1px solid rgba(242,230,238,.55);box-shadow:0 2px 10px rgba(10,21,48,.18);width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer}
+.nav span{color:#f2e6ee;font-size:14px;letter-spacing:.14em;min-width:70px;text-align:center}
+@media (hover:none){.nav{opacity:1}}
+
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:34px}
+.node{background:#fff;border-radius:22px;padding:18px 8px 22px;text-align:center;position:relative;box-shadow:0 10px 30px -18px rgba(10,21,48,.45)}
+.node svg{width:100px;height:100px;margin:14px auto 16px;display:block}
+.node b{display:block;font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.05;color:var(--navy2)}
+.node small{display:block;margin-top:8px;font-size:14px;color:var(--muted);line-height:1.35}
+.node:not(:last-child)::after{content:"→";position:absolute;right:-28px;top:46%;font-size:26px;color:var(--blue)}
+.lb{font-family:var(--serif);font-size:30px;fill:#14276b}.sm{font-family:var(--sans);font-size:16px;fill:#5b6785}
+.sp{transform-box:view-box;transform-origin:0 0;animation:spin 9s linear infinite}.sp.m{animation-duration:5s}.sp.f{animation-duration:1.8s}.sp.r{animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shut{0%,100%{transform:translateX(-30px)}50%{transform:translateX(30px)}}
+.sh{animation:shut 1.5s ease-in-out infinite}
+@keyframes dash{to{stroke-dashoffset:-52}}.wind{stroke-dasharray:16 10;animation:dash 1.2s linear infinite;stroke-linecap:round}
+.ax{stroke:#b79bb8;stroke-width:1.5;stroke-dasharray:4 5;fill:none}.sw{stroke:#0033ff;stroke-width:4;fill:none;stroke-linecap:round}.ar{stroke:#14276b;stroke-width:4;fill:none}
+.steps{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.steps span{background:#fff;border-radius:99px;padding:10px 20px;font-size:16px;color:#1d2746;box-shadow:0 8px 20px -14px rgba(10,21,48,.5)}
+.steps b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;color:var(--blue);margin-right:10px;vertical-align:-2px}.steps i{color:var(--blue);font-style:normal;font-size:22px}
+.height-mobile{display:none}
+
+@media (max-width: 700px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .deck {
+    position: relative;
+    display: block;
+    min-height: 100dvh;
+  }
+
+  .stage {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    transform: none !important;
+    border-radius: 0;
+  }
+
+  .slide {
+    position: relative;
+    inset: auto;
+    display: none;
+    min-height: 100dvh;
+    height: auto;
+    padding: 28px 20px calc(88px + env(safe-area-inset-bottom, 0px));
+    overflow: visible;
+    flex-direction: column;
+  }
+
+  .slide.on {
+    display: flex;
+  }
+
+  .slide > * {
+    flex: 0 0 auto;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: clamp(36px, 9vw, 52px);
+    line-height: 1.05;
+    margin: 8px 0 16px;
+  }
+
+  .slide .abs {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 12px 0 0;
+  }
+
+  .slide .abs.img,
+  .slide .abs.ph {
+    height: clamp(220px, 45vh, 360px) !important;
+  }
+
+  .card p,
+  .row {
+    font-size: 18px;
+  }
+
+  .slide svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .height-diagram {
+    display: none;
+  }
+
+  .height-mobile {
+    display: grid;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .height-mobile__step {
+    background: #fff;
+    border-radius: 18px;
+    padding: 14px 16px 16px;
+    box-shadow: 0 10px 30px -18px rgba(10, 21, 48, .45);
+  }
+
+  .height-mobile__step svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .height-mobile__step p {
+    color: #1d2746;
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  .grid,
+  .rows,
+  .flow,
+  .tl {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    gap: 14px !important;
+  }
+
+  .grid .img {
+    height: clamp(220px, 40vh, 320px);
+  }
+
+  .grid .ph {
+    min-height: clamp(220px, 40vh, 320px);
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .steps i,
+  .node:not(:last-child)::after,
+  .ev::before {
+    display: none;
+  }
+
+  .bar {
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: 8px 12px;
+  }
+
+  .bar span,
+  .bar i {
+    grid-column: 1;
+  }
+
+  .bar b {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  .slide .abs[style*="display:flex"] {
+    flex-wrap: wrap;
+    gap: 10px !important;
+  }
+
+  .ev .y {
+    font-size: 36px;
+  }
+
+  .nav {
+    opacity: 1;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .cover {
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .cover .t1,
+  .cover .t2 {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cover .t1 {
+    font-size: clamp(36px, 12vw, 64px);
+  }
+
+  .cover .t2 {
+    font-size: clamp(76px, 22vw, 160px);
+    line-height: 1;
+  }
+}
+
+/*
+:root {
+  --bg: #f4f7f1;
+  --card: #fff;
+  --navy: #10251b;
+  --navy2: #214631;
+  --blue: #70a83b;
+  --mid: #b8e986;
+  --mauve: #b7c9a7;
+  --plum: #627a4d;
+  --muted: #647367;
+  --ink: #172a1e;
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink);
+}
+
+.site-header {
+  min-height: 76px;
+  padding: 16px max(24px, calc((100% - 1240px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #10251b;
+  color: #dce8d7;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.site-brand {
+  color: #f4f7f1;
+  font-family: var(--serif);
+  font-size: 27px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.deck.stage {
+  position: relative;
+  inset: auto;
+  width: min(100%, 1440px);
+  height: auto;
+  min-height: 0;
+  margin: 0 auto;
+  overflow: visible;
+  transform: none;
+  border-radius: 0;
+  background: var(--bg);
+}
+
+.slide,
+.slide.on {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: clamp(44px, 6vw, 82px) clamp(20px, 7vw, 100px);
+  overflow: visible;
+  border-bottom: 1px solid #dfe8d9;
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+}
+
+.slide > * {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.slide .abs {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  margin: 24px 0 0 !important;
+}
+
+.slide h2 {
+  margin: 10px 0 24px;
+  color: var(--navy);
+  font-size: clamp(38px, 5vw, 62px);
+}
+
+.slide h2 em {
+  color: var(--blue);
+}
+
+.eyebrow {
+  color: #5e8e34;
+}
+
+.card {
+  border-radius: 18px;
+  box-shadow: 0 14px 36px -24px rgba(16, 37, 27, 0.42);
+}
+
+.card h3,
+.mw,
+.ev .y,
+.ev strong {
+  color: var(--navy2);
+}
+
+.dark {
+  background: var(--navy2);
+}
+
+.stat b {
+  color: var(--mid);
+}
+
+.chip {
+  border-color: #9dc878;
+  color: var(--navy2);
+}
+
+.slide .grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-rows: none !important;
+  gap: 18px;
+}
+
+.slide .flow {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.slide .tl {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ev {
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 14px 36px -24px rgba(16, 37, 27, 0.42);
+}
+
+.ev::before {
+  display: none;
+}
+
+.slide .card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.slide div.img {
+  height: clamp(240px, 32vw, 400px) !important;
+  min-height: 240px;
+  border-radius: 18px;
+}
+
+.slide img.img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 18px;
+}
+
+.bar i {
+  background: #78ad43;
+}
+
+.cover {
+  display: flex;
+  min-height: min(78vh, 760px);
+  padding: 64px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0 0 28px 28px;
+  background: #10251b;
+  text-align: center;
+}
+
+.cover .bg {
+  z-index: 0;
+  background-image: linear-gradient(rgba(13, 35, 22, 0.45), rgba(13, 35, 22, 0.72)), var(--off);
+}
+
+.cover .t1,
+.cover .t2 {
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  color: #f4f7f1;
+}
+
+.cover .t1 {
+  font-size: clamp(42px, 7vw, 78px);
+}
+
+.cover .t2 {
+  font-size: clamp(92px, 20vw, 250px);
+  line-height: 0.95;
+}
+
+.cover-caption {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+  color: #dce8d7;
+  font-size: clamp(15px, 2vw, 20px);
+  letter-spacing: 0.04em;
+}
+
+.site-footer {
+  padding: 36px max(24px, calc((100% - 1240px) / 2)) 42px;
+  background: #10251b;
+  color: #e2ebdd;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.footer-students {
+  font-weight: 600;
+}
+
+.footer-instagram {
+  margin-top: 8px;
+}
+
+.site-footer a {
+  color: #b8e986;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .slide .grid,
+  .slide .flow,
+  .slide .tl {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .slide .bar {
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: 8px 12px;
+  }
+
+  .bar span,
+  .bar i {
+    grid-column: 1;
+  }
+
+  .bar b {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    min-height: 66px;
+    padding: 14px 20px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .site-brand {
+    font-size: 24px;
+  }
+
+  .slide,
+  .slide.on {
+    padding: 42px 20px;
+  }
+
+  .slide .grid,
+  .slide .flow,
+  .slide .tl {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px;
+  }
+
+  .slide .flow .node:not(:last-child)::after {
+    content: "↓";
+    right: 50%;
+    top: auto;
+    bottom: -27px;
+    transform: translateX(50%);
+  }
+
+  .slide .flow .node:nth-child(3n)::after {
+    display: none;
+  }
+
+  .slide .flow .node:not(:last-child)::after {
+    display: block;
+  }
+
+  .slide .flow .node:last-child::after,
+  .slide .steps i,
+  .slide .ev::before {
+    display: none;
+  }
+
+  .slide .bar {
+    font-size: 14px;
+  }
+
+  .slide .stat b {
+    font-size: 68px;
+  }
+
+  .slide .abs[style*="display:flex"] {
+    align-items: flex-start !important;
+  }
+
+  .cover {
+    min-height: 72svh;
+    padding: 56px 20px;
+  }
+
+  .cover .t2 {
+    font-size: clamp(88px, 24vw, 150px);
+  }
+
+  .site-footer {
+    padding: 30px 20px 36px;
+  }
+}
+*/
+
+.nav {
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  right: 16px;
+  bottom: auto;
+  left: auto;
+  gap: 8px;
+  opacity: 1;
+}
+
+.nav button {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.nav span {
+  display: inline-flex;
+  min-height: 30px;
+  min-width: 56px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(242, 230, 238, .55);
+  border-radius: 999px;
+  background: rgba(10, 21, 48, .68);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.slide-footer {
+  position: absolute;
+  right: 28px;
+  bottom: 22px;
+  left: 28px;
+  color: #f2e6ee;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.slide-footer a {
+  color: #f2e6ee;
+}
+
+@media (max-width: 700px) {
+  .nav {
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    right: 10px;
+    bottom: auto;
+    left: auto;
+  }
+
+  .slide {
+    padding-top: 64px;
+  }
+
+  .slide-footer {
+    right: 16px;
+    bottom: 24px;
+    left: 16px;
+    font-size: 12px;
+  }
+}
+
+.park-card {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--navy);
+  box-shadow: 0 10px 30px -18px rgba(10, 21, 48, .45);
+}
+
+.park-card .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.park-card:hover .img {
+  transform: scale(1.04);
+}
+
+.park-card figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 38px 18px 18px;
+  background: linear-gradient(transparent, rgba(10, 21, 48, .82));
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.15;
+}
+
+.anatomy-flow {
+  display: grid;
+  gap: 16px;
+}
+
+.anatomy-step {
+  position: relative;
+  display: grid;
+  min-height: 112px;
+  grid-template-columns: 42px 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  padding: 14px 28px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 30px -18px rgba(10, 21, 48, .45);
+}
+
+.anatomy-step:not(:last-child)::after {
+  position: absolute;
+  bottom: -17px;
+  left: 81px;
+  z-index: 1;
+  width: 3px;
+  height: 18px;
+  background: repeating-linear-gradient(to bottom, var(--blue) 0 5px, transparent 5px 8px);
+  content: "";
+}
+
+.anatomy-step__number {
+  color: var(--blue);
+  font-family: var(--serif);
+  font-size: 32px;
+  font-style: italic;
+  text-align: center;
+}
+
+.anatomy-step svg {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.anatomy-step h3 {
+  margin-bottom: 5px;
+  color: var(--navy2);
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.anatomy-step p {
+  color: #26304d;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.stage > .slide:nth-of-type(3).on .rows > .card {
+  animation: history-card-drift 4.5s ease-in-out infinite alternate;
+}
+
+.stage > .slide:nth-of-type(3).on .rows > .card:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+.stage > .slide:nth-of-type(3).on .rows > .card:nth-child(3) {
+  animation-delay: -3s;
+}
+
+.stage > .slide:nth-of-type(3).on > .img {
+  animation: history-image-drift 5s ease-in-out infinite alternate;
+}
+
+.stage > .slide:nth-of-type(3).on > .img:nth-child(5) {
+  animation-delay: -2.5s;
+}
+
+.stage > .slide:nth-of-type(3).on > .img:nth-child(6) {
+  animation-delay: -1.25s;
+}
+
+@keyframes history-card-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-7px); }
+}
+
+@keyframes history-image-drift {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-7px) scale(1.015); }
+}
+
+@media (max-width: 700px) {
+  .park-card {
+    height: clamp(220px, 40vh, 320px);
+  }
+
+  .anatomy-step {
+    min-height: 108px;
+    grid-template-columns: 32px 48px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .anatomy-step:not(:last-child)::after {
+    left: 59px;
+  }
+
+  .anatomy-step svg {
+    width: 46px;
+    height: 46px;
+  }
+
+  .anatomy-step h3 {
+    font-size: 23px;
+  }
+
+  .anatomy-step p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage > .slide:nth-of-type(3).on .rows > .card,
+  .stage > .slide:nth-of-type(3).on > .img,
+  .park-card .img {
+    animation: none;
+    transition: none;
+  }
+}
+
+.bars .bar i {
+  transform: scaleX(0);
+}
+
+.slide.on .bars .bar i {
+  transform: scaleX(1);
+  animation: bar-fill 1.2s cubic-bezier(.2, .8, .2, 1) .15s both;
+}
+
+.slide:not(.on) .bars .bar i {
+  animation: none;
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bars .bar i {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes bar-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.rectifier-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .nav span {
+    min-height: 30px;
+    color: #fff;
+  }
+
+  .rectifier-card {
+    display: none;
+  }
+
+  .rectifier-card + .rectifier-mobile {
+    display: grid;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .rectifier-source {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    color: var(--navy2);
+    font-family: var(--serif);
+    font-size: 24px;
+  }
+
+  .rectifier-source svg {
+    width: min(100%, 210px);
+    height: 34px;
+    overflow: visible;
+  }
+
+  .rectifier-source path {
+    fill: none;
+    stroke: var(--blue);
+    stroke-linecap: round;
+    stroke-width: 4;
+  }
+
+  .rectifier-branches {
+    display: grid;
+    gap: 14px;
+  }
+
+  .rectifier-route {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 16px;
+    background: #f7eff4;
+    text-align: center;
+  }
+
+  .rectifier-route h3 {
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .rectifier-block,
+  .rectifier-output {
+    width: min(100%, 280px);
+    padding: 11px 16px;
+    border-radius: 12px;
+    background: var(--navy2);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .rectifier-block--alternate {
+    background: var(--plum);
+  }
+
+  .rectifier-output {
+    background: #fff;
+    color: var(--navy2);
+    box-shadow: 0 6px 20px -14px rgba(10, 21, 48, .6);
+  }
+
+  .rectifier-arrow {
+    color: var(--blue);
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .rectifier-devices {
+    display: grid;
+    width: min(100%, 280px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .rectifier-devices > div {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--navy2);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .device-icon,
+  .grid-icon {
+    color: var(--blue);
+    font-size: 23px;
+    line-height: 1;
+  }
+
+  .rectifier-output--grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="deck"><div class="stage" id="stage">
+
+<!-- 1 PORTADA -->
+<section class="slide cover"><div class="bg"></div><div class="t1">Energía</div><div class="t2">Eólica</div></section>
+
+<!-- 2 FLUJO -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Del viento <em>a la electricidad</em></h2>
+<div class="flow abs" style="left:84px;top:230px;width:1112px">
+<div class="node"><div class="num">01</div><svg viewBox="0 0 64 64"><path class="wind" d="M6 22h34a7 7 0 1 0-7-7M6 34h46a7 7 0 1 1-7 7M6 46h24" stroke="#0033ff" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>Viento</b><small>energía cinética</small></div>
+<div class="node"><div class="num">02</div><svg viewBox="0 0 64 64"><g transform="translate(32 32)"><g class="sp"><ellipse cy="-17" rx="5" ry="15" fill="#14276b"/><ellipse cy="-17" rx="5" ry="15" fill="#14276b" transform="rotate(120)"/><ellipse cy="-17" rx="5" ry="15" fill="#14276b" transform="rotate(240)"/></g><circle r="5" fill="#0033ff"/></g></svg><b>Aspas y rotor</b><small>aspas + buje</small></div>
+<div class="node"><div class="num">03</div><svg viewBox="0 0 64 64"><g transform="translate(24 38)"><g class="sp m"><circle r="15" fill="none" stroke="#14276b" stroke-width="8" stroke-dasharray="5 4.7"/></g><circle r="3" fill="#0033ff"/></g><g transform="translate(47 19)"><g class="sp f r"><circle r="9" fill="none" stroke="#0033ff" stroke-width="6" stroke-dasharray="4 3.5"/></g></g></svg><b>Multiplicadora</b><small>engranajes: más rpm</small></div>
+<div class="node"><div class="num">04</div><svg viewBox="0 0 64 64"><rect x="6" y="22" width="20" height="20" fill="#0033ff"/><rect x="26" y="22" width="20" height="20" fill="#8b3a62"/><path d="M50 14c9 0 9 9 0 9s-9 9 0 9 9 9 0 9 -9 9 0 9" stroke="#c2703d" stroke-width="4" fill="none"/></svg><b>Generador</b><small>imanes y bobinas</small></div>
+<div class="node"><div class="num">05</div><svg viewBox="0 0 64 64"><path d="M3 32C13 2 23 2 32 32S51 62 61 32" stroke="#0033ff" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>Corriente alterna</b><small>onda senoidal</small></div>
+<div class="node"><div class="num">06</div><svg viewBox="0 0 64 64"><path d="M18 12v40l26-20z" fill="#14276b"/><path d="M48 12v40" stroke="#0033ff" stroke-width="6"/></svg><b>Rectificador</b><small>continua · o a la red</small></div>
+</div>
+</section>
+
+<!-- 3 MILES DE AÑOS -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Una energía de <em>miles de años</em></h2>
+<div class="rows abs" style="left:84px;top:210px;width:620px;gap:22px">
+<div class="card"><div class="num">01</div><h3>Barcos y molinos</h3><p>El viento ya movía barcos y molinos que molían grano.</p></div>
+<div class="card"><div class="num">02</div><h3>Campos de aerogeneradores</h3><p>Hoy hay muchos en Argentina.</p></div>
+<div class="card"><div class="num">03</div><h3>Offshore</h3><p>Aerogeneradores instalados directamente en el mar.</p></div>
+</div>
+<div class="img abs" style="left:760px;top:196px;width:190px;height:420px;background-image:var(--mol)"></div>
+<div class="img abs" style="left:970px;top:196px;width:226px;height:200px;background-image:var(--ship)"></div>
+<div class="img abs" style="left:970px;top:416px;width:226px;height:200px;background-image:var(--sun)"></div>
+</section>
+
+<!-- 4 ALTURA -->
+<section class="slide height-slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>En altura, <em>lejos de los obstáculos</em></h2>
+<div class="card abs height-diagram" style="left:84px;top:196px;width:1112px;height:400px;padding:0;overflow:hidden">
+<svg viewBox="0 0 1112 400" width="1112" height="400">
+<rect x="0" y="340" width="1112" height="60" fill="#e3e9f8"/>
+<rect x="170" y="282" width="90" height="58" fill="#14276b"/><path d="M158 284L215 240L272 284Z" fill="#0a1530"/>
+<circle cx="338" cy="300" r="34" fill="#6f8fe8"/><rect x="334" y="326" width="8" height="14" fill="#14276b"/>
+<circle cx="408" cy="308" r="26" fill="#6f8fe8"/><rect x="404" y="328" width="8" height="12" fill="#14276b"/>
+<path class="wind" d="M20 300H150" stroke="#b79bb8" stroke-width="5" fill="none"/><path class="wind" d="M20 262H150" stroke="#b79bb8" stroke-width="5" fill="none"/>
+<text x="30" y="378" class="sm">Casas y árboles interfieren con el paso del viento</text>
+<path class="wind" d="M470 70H700" stroke="#0033ff" stroke-width="5" fill="none"/><path class="wind" d="M470 120H700" stroke="#0033ff" stroke-width="5" fill="none"/><path class="wind" d="M470 170H700" stroke="#0033ff" stroke-width="5" fill="none"/>
+<polygon points="792,340 810,340 805,134 797,134" fill="#14276b"/><rect x="788" y="124" width="40" height="18" rx="5" fill="#0a1530"/>
+<g transform="translate(786 133)"><g class="sp"><ellipse cy="-52" rx="8" ry="52" fill="#14276b"/><ellipse cy="-52" rx="8" ry="52" fill="#14276b" transform="rotate(120)"/><ellipse cy="-52" rx="8" ry="52" fill="#14276b" transform="rotate(240)"/></g><circle r="9" fill="#0033ff"/></g>
+<text x="470" y="40" class="sm">El viento llega a las aspas y provoca movimiento</text>
+</svg></div>
+<div class="height-mobile">
+<article class="height-mobile__step">
+<svg viewBox="0 0 320 110" aria-hidden="true">
+<rect x="0" y="92" width="320" height="18" fill="#e3e9f8"/>
+<rect x="48" y="54" width="52" height="38" fill="#14276b"/><path d="M40 55L74 28L108 55Z" fill="#0a1530"/>
+<circle cx="142" cy="68" r="20" fill="#6f8fe8"/><rect x="139" y="85" width="6" height="7" fill="#14276b"/>
+<circle cx="190" cy="72" r="16" fill="#6f8fe8"/><rect x="187" y="85" width="6" height="7" fill="#14276b"/>
+<path d="M8 45H40M8 70H40" stroke="#b79bb8" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 7"/>
+</svg>
+<p>Las casas y los árboles frenan el viento cerca del suelo.</p>
+</article>
+<article class="height-mobile__step">
+<svg viewBox="0 0 320 150" aria-hidden="true">
+<path d="M18 45H135M18 76H135M18 107H135" stroke="#0033ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8"/>
+<path d="M241 140L246 55H254L259 140Z" fill="#14276b"/>
+<rect x="235" y="48" width="30" height="14" rx="4" fill="#0a1530"/>
+<g transform="translate(250 55)" fill="#14276b">
+<path d="M-4 -5C-8 -55 0 -70 4 -70C8 -70 8 -25 4 -5Z"/>
+<path d="M-4 -5C-8 -55 0 -70 4 -70C8 -70 8 -25 4 -5Z" transform="rotate(120)"/>
+<path d="M-4 -5C-8 -55 0 -70 4 -70C8 -70 8 -25 4 -5Z" transform="rotate(240)"/>
+</g>
+<circle cx="250" cy="55" r="6" fill="#0033ff"/>
+</svg>
+<p>A mayor altura, el viento llega a las aspas y las hace girar.</p>
+</article>
+</div>
+</section>
+
+<!-- 5 ANATOMIA -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Del viento <em>al generador</em></h2>
+<div class="anatomy-flow abs" style="left:84px;top:190px;width:1112px">
+<article class="anatomy-step">
+<span class="anatomy-step__number">01</span>
+<svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g class="sp"><path d="M-5-5C-10-25-3-31 0-31S10-25 5-5Z" fill="#14276b"/><path d="M-5-5C-10-25-3-31 0-31S10-25 5-5Z" fill="#14276b" transform="rotate(120)"/><path d="M-5-5C-10-25-3-31 0-31S10-25 5-5Z" fill="#14276b" transform="rotate(240)"/></g><circle r="6" fill="#0033ff"/></g></svg>
+<div><h3>Rotor</h3><p>El viento hace girar las aspas y el buje. El movimiento comienza lento y con mucha fuerza.</p></div>
+</article>
+<article class="anatomy-step">
+<span class="anatomy-step__number">02</span>
+<svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(23 39)"><g class="sp m r"><circle r="17" fill="none" stroke="#14276b" stroke-width="9" stroke-dasharray="6 5"/></g><circle r="3" fill="#0033ff"/></g><g transform="translate(47 19)"><g class="sp f"><circle r="10" fill="none" stroke="#0033ff" stroke-width="6" stroke-dasharray="4 3"/></g></g></svg>
+<div><h3>Caja multiplicadora</h3><p>Los engranajes transmiten el giro y aumentan la velocidad: suben las rpm y disminuye el torque.</p></div>
+</article>
+<article class="anatomy-step">
+<span class="anatomy-step__number">03</span>
+<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="9" y="20" width="20" height="24" rx="3" fill="#0033ff"/><rect x="29" y="20" width="20" height="24" rx="3" fill="#8b3a62"/><path d="M51 15v34" stroke="#c2703d" stroke-width="4" stroke-linecap="round"/><path d="M8 52h48" stroke="#14276b" stroke-width="3" stroke-linecap="round"/></svg>
+<div><h3>Generador</h3><p>Los imanes giran frente a bobinas de cobre y convierten el movimiento en energía eléctrica.</p></div>
+</article>
+</div>
+</section>
+
+<!-- 6 GENERADOR -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Dentro <em>del generador</em></h2>
+<div class="card abs" style="left:84px;top:190px;width:640px;height:380px;padding:0">
+<svg viewBox="0 0 640 380" width="640" height="380">
+<g fill="none" stroke="#c2703d" stroke-width="6"><ellipse cx="210" cy="190" rx="38" ry="110"/><ellipse cy="190" cx="250" rx="38" ry="110"/><ellipse cy="190" cx="290" rx="38" ry="110"/><ellipse cy="190" cx="330" rx="38" ry="110"/><ellipse cy="190" cx="370" rx="38" ry="110"/><ellipse cy="190" cx="410" rx="38" ry="110"/></g>
+<g transform="translate(310 190)"><g class="sp m"><rect x="-70" y="-17" width="70" height="34" fill="#0033ff"/><rect x="0" y="-17" width="70" height="34" fill="#8b3a62"/><text x="-35" y="7" text-anchor="middle" fill="#fff" font-size="18" font-family="Inter,sans-serif">N</text><text x="35" y="7" text-anchor="middle" fill="#fff" font-size="18" font-family="Inter,sans-serif">S</text></g></g>
+<text x="320" y="345" text-anchor="middle" class="sm">imanes que giran · bobina de cobre · el flujo magnético cambia</text>
+</svg></div>
+<div class="card abs" style="left:750px;top:190px;width:446px;height:380px;padding:0">
+<svg viewBox="0 0 446 380" width="446" height="380">
+<rect x="70" y="80" width="80" height="250" rx="8" fill="#0033ff"/><rect x="230" y="280" width="80" height="50" rx="8" fill="#6f8fe8"/>
+<path d="M330 80V280M322 80H338M322 280H338" stroke="#8b3a62" stroke-width="4" fill="none"/>
+<text x="355" y="190" class="lb" fill="#8b3a62" style="fill:#8b3a62;font-size:44px">4 V</text>
+<text x="110" y="358" text-anchor="middle" class="sm">A · 5 V</text><text x="270" y="358" text-anchor="middle" class="sm">B · 1 V</text>
+<text x="223" y="48" text-anchor="middle" class="sm">diferencia de potencial</text>
+</svg></div>
+<div class="steps abs" style="left:84px;top:595px;width:1112px"><span><b>01</b>Giran los imanes</span><i>→</i><span><b>02</b>Cambia el flujo magnético</span><i>→</i><span><b>03</b>Se induce una tensión</span><i>→</i><span><b>04</b>Circuito cerrado: corriente</span></div>
+</section>
+
+<!-- 7 ALTERNA -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>Corriente <em>alterna</em></h2>
+<div class="card abs" style="left:84px;top:190px;width:740px;height:400px;padding:0">
+<svg viewBox="0 0 740 400" width="740" height="400">
+<text x="30" y="44" class="lb">Menos rpm</text><path class="ax" d="M30 120H710"/><path class="sw" data-x="30" data-y="120" data-w="680" data-c="2" data-a="52"/>
+<text x="30" y="244" class="lb">Más rpm</text><path class="ax" d="M30 316H710"/><path class="sw" data-x="30" data-y="316" data-w="680" data-c="5" data-a="52"/>
+<text x="716" y="74" class="sm" text-anchor="end">+</text><text x="716" y="176" class="sm" text-anchor="end">−</text>
+<text x="710" y="390" class="sm" text-anchor="end">tiempo →</text>
+</svg></div>
+<div class="card abs" style="left:850px;top:190px;width:346px;height:400px;padding:0">
+<svg viewBox="0 0 346 400" width="346" height="400">
+<rect x="40" y="90" width="266" height="170" rx="24" fill="none" stroke="#14276b" stroke-width="7"/>
+<g fill="#6f8fe8"><circle class="sh" cx="110" cy="90" r="10"/><circle class="sh" cx="173" cy="90" r="10"/><circle class="sh" cx="236" cy="90" r="10"/><circle class="sh" cx="110" cy="260" r="10"/><circle class="sh" cx="173" cy="260" r="10"/><circle class="sh" cx="236" cy="260" r="10"/></g>
+<text x="173" y="330" text-anchor="middle" class="lb">+ → − → +</text><text x="173" y="358" text-anchor="middle" class="sm">los electrones van y vienen</text>
+</svg></div>
+</section>
+
+<!-- 8 RECTIFICADOR -->
+<section class="slide">
+<div class="eyebrow">1 · Principios y funcionamiento físico</div>
+<h2>De alterna <em>a su destino</em></h2>
+<div class="card abs rectifier-card" style="left:84px;top:190px;width:1112px;height:410px;padding:0">
+<svg viewBox="0 0 1112 410" width="1112" height="410">
+<path class="sw" data-x="50" data-y="110" data-w="190" data-c="2" data-a="34"/><path class="ar" d="M260 110H320"/>
+<rect x="330" y="60" width="210" height="100" rx="16" fill="#14276b"/><text x="435" y="119" text-anchor="middle" class="lb" style="fill:#fff">Rectificador</text><path class="ar" d="M560 110H620"/>
+<path d="M630 110H770" stroke="#0033ff" stroke-width="6" stroke-linecap="round"/><text x="700" y="82" text-anchor="middle" class="sm">corriente continua</text>
+<g transform="translate(850 80)"><circle cx="20" cy="22" r="22" fill="#f2e6ee" stroke="#14276b" stroke-width="4"/><rect x="10" y="48" width="20" height="10" rx="3" fill="#14276b"/></g><text x="870" y="170" text-anchor="middle" class="sm">luces</text>
+<g transform="translate(975 82)"><rect x="0" y="8" width="64" height="40" rx="6" fill="none" stroke="#14276b" stroke-width="4"/><rect x="64" y="20" width="8" height="16" fill="#14276b"/><rect x="8" y="16" width="14" height="24" fill="#0033ff"/><rect x="26" y="16" width="14" height="24" fill="#0033ff"/></g><text x="1010" y="170" text-anchor="middle" class="sm">baterías</text>
+<path class="sw" data-x="50" data-y="300" data-w="190" data-c="2" data-a="34"/><path class="ar" d="M260 300H320"/>
+<rect x="330" y="250" width="210" height="100" rx="16" fill="#8b3a62"/><text x="435" y="309" text-anchor="middle" class="lb" style="fill:#fff">Se acondiciona</text><path class="ar" d="M560 300H620"/>
+<g transform="translate(690 262)" stroke="#14276b" stroke-width="5" fill="none" stroke-linecap="round"><path d="M0 76L20 0L40 76M7 46H33M12 22H28"/></g><text x="710" y="362" text-anchor="middle" class="sm">red eléctrica</text>
+</svg></div>
+<div class="card abs rectifier-mobile" aria-label="Flujo de corriente alterna hacia los equipos o la red">
+<div class="rectifier-source">
+  <span>Corriente alterna</span>
+  <svg viewBox="0 0 120 40" aria-hidden="true"><path d="M2 20C12 0 22 0 32 20S52 40 62 20 82 0 92 20 112 40 118 20" /></svg>
+</div>
+<div class="rectifier-branches">
+  <article class="rectifier-route">
+    <h3>Para usar o almacenar</h3>
+    <div class="rectifier-block">Rectificador</div>
+    <span class="rectifier-arrow" aria-hidden="true">↓</span>
+    <div class="rectifier-output">Corriente continua</div>
+    <span class="rectifier-arrow" aria-hidden="true">↓</span>
+    <div class="rectifier-devices">
+      <div><span class="device-icon light-icon" aria-hidden="true">✦</span>Luces</div>
+      <div><span class="device-icon battery-icon" aria-hidden="true">▰</span>Baterías</div>
+    </div>
+  </article>
+  <article class="rectifier-route">
+    <h3>Para entregar a la red</h3>
+    <div class="rectifier-block rectifier-block--alternate">Se acondiciona</div>
+    <span class="rectifier-arrow" aria-hidden="true">↓</span>
+    <div class="rectifier-output rectifier-output--grid"><span class="grid-icon" aria-hidden="true">ϟ</span>Red eléctrica</div>
+  </article>
+</div>
+</div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Ventajas de la <em>energía eólica</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:230px 230px">
+<div class="card"><h3>Renovable</h3><p>El viento no se agota y está disponible en gran parte del planeta. Es autóctona: favorece la independencia energética.</p></div>
+<div class="card"><h3>Limpia</h3><p>No contamina directamente al producir electricidad.</p></div>
+<div class="card"><h3>Menos fósiles</h3><p>Reduce el uso de petróleo y carbón.</p></div>
+<div class="card"><h3>Genera empleo</h3><p>Crea puestos de trabajo y desarrollo local.</p></div>
+<div class="card"><h3>Mantenimiento</h3><p>Necesita poco mantenimiento y sus instalaciones tienen una vida útil prolongada.</p></div>
+<div class="img" style="background-image:var(--sun)"></div>
+</div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Desafíos de la <em>energía eólica</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:230px 230px">
+<div class="card"><h3 style="color:var(--plum)">Depende del viento</h3><p>Solo genera donde y cuando sopla: los parques deben ir donde el viento predomina.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Costo inicial</h3><p>La instalación es costosa.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Espacio</h3><p>Necesita bastante espacio.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Almacenamiento</h3><p>Es difícil almacenar la electricidad.</p></div>
+<div class="card"><h3 style="color:var(--plum)">Ruido</h3><p>Puede generar ruido.</p></div>
+<img class="img" src="Images/cloudTurbines.jpg" alt="Aerogeneradores bajo un cielo nublado">
+</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Impacto <em>ambiental</em></h2>
+<div class="rows abs" style="left:84px;top:200px;width:660px;gap:22px">
+<div class="row"><div class="num">01</div><div>Puede afectar a aves y murciélagos.</div></div>
+<div class="row"><div class="num">02</div><div>Los parques pueden modificar el paisaje.</div></div>
+<div class="row"><div class="num">03</div><div>Fabricar y transportar los equipos genera contaminación.</div></div>
+<div class="row"><div class="num">04</div><div>Algunas partes son difíciles de reciclar.</div></div>
+<p style="font-size:16px;line-height:1.5;color:var(--muted);font-style:italic;margin-top:6px">Repsol: las palas pueden repararse o reutilizarse como materia prima, y los parques se instalan en zonas despobladas tras un estudio.</p>
+</div>
+<div class="img abs" style="left:800px;top:110px;width:396px;height:500px;background-image:var(--tri)"></div>
+<div class="abs" style="left:800px;top:470px;width:396px;height:140px;border-radius:0 0 20px 20px;background:linear-gradient(transparent,rgba(10,21,48,.9));display:flex;align-items:flex-end;padding:22px 26px;font-family:var(--serif);font-size:28px;line-height:1.15;color:#fff;font-style:italic">Por eso es clave estudiar dónde se instalan los parques</div>
+</section>
+
+<!-- COSTOS DE INVERSIÓN -->
+<section class="slide">
+<div class="eyebrow">2 · Ventajas, desafíos e impacto ambiental</div>
+<h2>Costos <em>de inversión</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:300px">
+<div class="card"><div class="num">01</div><h3 style="margin-top:12px">Inversión inicial importante</h3><p>Se deben comprar los aerogeneradores, construir caminos, preparar el terreno y conectar las instalaciones a la red eléctrica.</p></div>
+<div class="card"><div class="num">02</div><h3 style="margin-top:12px">Rentable a largo plazo</h3><p>Aunque el costo inicial es elevado, el viento es gratuito y los gastos de funcionamiento suelen ser relativamente bajos.</p></div>
+<div class="card"><div class="num">03</div><h3 style="margin-top:12px">Equipos más eficientes</h3><p>Con los avances tecnológicos, los equipos son cada vez más eficientes y permiten producir más electricidad.</p></div>
+</div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Argentina <em>en números</em></h2>
+<p class="abs" style="left:84px;top:178px;width:1000px;font-size:20px;line-height:1.5;color:#1d2746">Referente regional en energía eólica: sus parques superan la media mundial gracias a la estabilidad de sus vientos.</p>
+<div class="grid abs" style="left:84px;top:268px;width:1112px;grid-template-columns:repeat(3,1fr)">
+<div class="card dark stat" style="padding:30px"><b>68</b><p>parques eólicos en operación comercial</p></div>
+<div class="card dark stat" style="padding:30px"><b>+4.200</b><p>MW generados: la tecnología líder de la matriz renovable</p></div>
+<div class="card dark stat" style="padding:30px"><b>40–50%</b><p>factor de capacidad (promedio mundial: ~35%), con picos de más del 80% en primavera-verano</p></div>
+</div>
+<div class="abs" style="left:84px;top:552px;display:flex;gap:14px;align-items:center"><span style="font-family:var(--serif);font-size:26px;font-weight:400;color:var(--navy2);margin-right:10px">Provincias principales</span><span class="chip">Chubut</span><span class="chip">Buenos Aires</span><span class="chip">Santa Cruz</span><span class="chip">La Rioja</span></div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Los seis parques <em>principales</em></h2>
+<div class="card abs" style="left:84px;top:190px;width:720px;padding:34px 30px"><div class="bars">
+<div class="bar"><span>Aluar · Puerto Madryn, Chubut</span><i style="--w:100%"></i><b>582</b></div>
+<div class="bar"><span>Mataco–San Jorge · Bs. As.</span><i style="--w:47.4%"></i><b>276</b></div>
+<div class="bar"><span>Puerto Madryn–Genneia · Chubut</span><i style="--w:38.1%"></i><b>222</b></div>
+<div class="bar"><span>Los Teros · Azul, Bs. As.</span><i style="--w:30%"></i><b>175</b></div>
+<div class="bar"><span>Arauco · La Rioja</span><i style="--w:25.8%"></i><b>150</b></div>
+<div class="bar"><span>Bicentenario · Santa Cruz</span><i style="--w:21.6%"></i><b>126</b></div>
+</div><p style="margin-top:18px;font-size:14px;color:var(--muted)">Potencia en MW</p></div>
+<img class="img abs" src="Images/Parks/aluar2.webp" alt="Aerogeneradores del parque eólico Aluar" style="left:840px;top:190px;width:356px;height:290px">
+<p class="abs" style="left:840px;top:496px;width:356px;font-size:16px;line-height:1.5;color:#1d2746">Aluar: el complejo más grande del país, destinado a abastecer la producción de aluminio.</p>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Fichas <em>de los parques</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);grid-template-rows:215px 215px">
+<div class="card"><h3>Aluar</h3><div class="mw">582 MW</div><p>Puerto Madryn, Chubut. El más grande del país; abastece la producción de aluminio.</p></div>
+<div class="card"><h3>Mataco–San Jorge</h3><div class="mw">276 MW</div><p>Tornquist, Buenos Aires. El de mayor capacidad de la provincia.</p></div>
+<div class="card"><h3>Puerto Madryn–Genneia</h3><div class="mw">222 MW</div><p>Chubut.</p></div>
+<div class="card"><h3>Los Teros</h3><div class="mw">175 MW</div><p>Azul, Buenos Aires.</p></div>
+<div class="card"><h3>Arauco</h3><div class="mw">150 MW</div><p>La Rioja. Desarrollador del NOA; hoy suma capacidad híbrida con energía solar.</p></div>
+<div class="card"><h3>Bicentenario</h3><div class="mw">126 MW</div><p>Jaramillo, Santa Cruz.</p></div>
+</div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Galería de parques <em>eólicos</em></h2>
+<div class="grid abs" style="left:84px;top:190px;width:1112px;grid-template-columns:repeat(3,1fr);height:420px">
+<figure class="park-card"><img class="img" src="Images/Parks/parqueAluar.webp" alt="Aerogeneradores del Parque Eólico Aluar, en Puerto Madryn"><figcaption>Parque Eólico Aluar</figcaption></figure>
+<figure class="park-card"><img class="img" src="Images/Parks/matacoSanJorge.webp" alt="Aerogeneradores del Parque Eólico Mataco–San Jorge, en Tornquist"><figcaption>Parque Eólico Mataco–San Jorge</figcaption></figure>
+<figure class="park-card"><img class="img" src="Images/Parks/Los Teros.jpg" alt="Aerogeneradores del Parque Eólico Los Teros, en Azul"><figcaption>Parque Eólico Los Teros</figcaption></figure>
+</div>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+<div class="eyebrow">3 · Consumo y parques en Argentina</div>
+<h2>Del viento <em>a la red</em></h2>
+<div class="rows abs" style="left:84px;top:196px;width:760px;gap:26px">
+<div class="row"><div class="num">01</div><div>Argentina tiene un recurso eólico excepcional y una fuerte inversión privada.</div></div>
+<div class="row"><div class="num">02</div><div>Pero el SADI (Sistema Argentino de Interconexión) no tiene capacidad suficiente para absorber y transportar toda esa energía.</div></div>
+<div class="row"><div class="num">03</div><div>Solución: la «era del almacenamiento a gran escala». Baterías de alta capacidad guardan el excedente cuando la red se satura y lo liberan cuando la demanda se dispara.</div></div>
+</div>
+<div class="img abs" style="left:900px;top:110px;width:296px;height:500px;background-image:var(--cap)"></div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+<div class="eyebrow">4 · Historia en Argentina</div>
+<h2>Una historia <em>en seis hitos</em></h2>
+<p class="abs" style="left:84px;top:200px;width:1112px;text-align:center;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--navy2)">Años 80 y 90: nacen los primeros proyectos</p>
+<div class="tl abs" style="left:84px;top:290px;width:1112px">
+<div class="ev"><div class="y">1994</div><div class="d"></div><strong>Antonio Morán</strong><p>Parque en Chubut: el primero comercial del país.</p></div>
+<div class="ev l"><div class="y">1998</div><div class="d"></div><strong>Ley 25.019</strong><p>Primera ley de fomento, frenada por la crisis de 2001.</p></div>
+<div class="ev l"><div class="y">2006</div><div class="d"></div><strong>Ley 26.190</strong><p>Fijó la meta inicial del 8% de energía renovable.</p></div>
+<div class="ev"><div class="y">2009</div><div class="d"></div><strong>Plan GENREN</strong><p>Primer intento del Estado de licitar renovables a gran escala; resultados limitados.</p></div>
+<div class="ev l"><div class="y">2015</div><div class="d"></div><strong>Ley 27.191</strong><p>Creó el fondo FODER y la meta obligatoria del 20% para 2025.</p></div>
+<div class="ev"><div class="y">2016</div><div class="d"></div><strong>RenovAr</strong><p>El gran punto de inflexión: licitaciones internacionales con inversiones millonarias.</p></div>
+</div>
+<div class="legend abs" style="left:84px;top:600px;width:1112px;justify-content:center"><span><i></i>Hitos</span><span><i class="l"></i>Leyes</span></div>
+</section>
+
+<!-- 15 -->
+<section class="slide">
+<div class="eyebrow">4 · Historia en Argentina</div>
+<h2>Infraestructura y <em>desafíos actuales</em></h2>
+<div class="img abs" style="left:84px;top:190px;width:300px;height:430px;background-image:var(--mol)"></div>
+<div class="rows abs" style="left:430px;top:196px;width:766px;gap:24px">
+<div class="row"><div class="num">01</div><div>Tecnología y crecimiento: se pasó de molinos pequeños a gigantescos aerogeneradores modernos.</div></div>
+<div class="row"><div class="num">02</div><div>La Patagonia tiene los mejores vientos, pero faltan redes de alta tensión.</div></div>
+<div class="row"><div class="num">03</div><div>Por eso hoy lidera Buenos Aires, cerca de Bahía Blanca y de los centros de consumo.</div></div>
+<div class="row"><div class="num">04</div><div>Desafío: ampliar las líneas de transporte eléctrico para evacuar toda la energía que se produce.</div></div>
+</div>
+</section>
+
+<!-- PERSPECTIVA A FUTURO -->
+<section class="slide">
+<div class="eyebrow">5 · Perspectiva a futuro</div>
+<h2>El futuro es <em>prometedor</em></h2>
+<p class="abs" style="left:84px;top:178px;width:1000px;font-size:20px;line-height:1.5;color:#1d2746">Se espera que su utilización siga creciendo en todo el mundo debido a la necesidad de reducir la contaminación y encontrar fuentes de energía más sostenibles. Algunos avances esperados:</p>
+<div class="grid abs" style="left:84px;top:290px;width:1112px;grid-template-columns:repeat(4,1fr);grid-template-rows:230px">
+<div class="card"><h3>Aerogeneradores más eficientes</h3><p>Capaces de producir más electricidad aprovechando mejor el viento.</p></div>
+<div class="card"><h3>Parques eólicos marinos</h3><p>Instalaciones ubicadas en el mar, donde suelen existir vientos más constantes.</p></div>
+<div class="card"><h3>Mejores baterías</h3><p>Permitirán almacenar la energía producida para utilizarla cuando sea necesaria.</p></div>
+<div class="card"><h3>Menores costos</h3><p>Los avances tecnológicos pueden hacer que instalar y mantener estos sistemas sea más económico.</p></div>
+</div>
+<div class="band abs" style="left:84px;top:550px;width:1112px">Según la Agencia Internacional de Energías Renovables (IRENA), la energía eólica terrestre fue una de las formas más económicas de generar electricidad nueva en 2024.</div>
+</section>
+
+<!-- CONCLUSIÓN -->
+<section class="slide">
+<div class="eyebrow">6 · Conclusión</div>
+<h2>Una alternativa <em>para el futuro</em></h2>
+<div class="rows abs" style="left:84px;top:200px;width:760px;gap:26px">
+<div class="row"><div class="num">01</div><div>La energía eólica es una alternativa importante para producir electricidad de manera más limpia y reducir la dependencia de los combustibles fósiles. Aunque presenta desafíos, como su dependencia del viento, los costos iniciales y algunos impactos ambientales, sus beneficios son muy importantes.</div></div>
+<div class="row"><div class="num">02</div><div>Con el desarrollo de nuevas tecnologías y una mayor inversión, puede convertirse en una de las principales fuentes de energía del futuro, contribuyendo al cuidado del medio ambiente y a un desarrollo más sostenible.</div></div>
+</div>
+<img class="img abs" src="Images/gabImage.jpg" alt="Vista desde lo alto de un aerogenerador, con el parque eólico y el mar al fondo" style="left:900px;top:110px;width:296px;height:500px">
+</section>
+
+<!-- 16 -->
+<section class="slide cover"><div class="bg"></div><div class="t2">Gracias</div><div class="slide-footer">Estudiantes: Bernal Santino, Montaño Bautista, Arcuri Lucas, Berraquero Tiziano y Romero Gabriel.<br>No sean malos, sígannos en IG: <a href="https://www.instagram.com/bernalsantt/" target="_blank" rel="noopener noreferrer">@bernalsantt</a>, <a href="https://www.instagram.com/bauurivarola/" target="_blank" rel="noopener noreferrer">@bauurivarola</a>, <a href="https://www.instagram.com/lucassarcuri/" target="_blank" rel="noopener noreferrer">@lucassarcuri</a>, <a href="https://www.instagram.com/berraquerotiziano/" target="_blank" rel="noopener noreferrer">@berraquerotiziano</a> y <a href="https://www.instagram.com/gabyy.romeroo/" target="_blank" rel="noopener noreferrer">@gabyy.romeroo</a>.</div></section>
+
+</div></div>
+<div class="nav"><button id="prev" aria-label="Anterior">←</button><span id="ct"></span><button id="next" aria-label="Siguiente">→</button></div>
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('ct');
+  var currentSlide = 0;
+  var mobileLayout = window.matchMedia('(max-width: 700px)');
+
+  function fitStage() {
+    if (mobileLayout.matches) {
+      stage.style.transform = 'none';
+      return;
+    }
+
+    var scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    stage.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+  }
+
+  function showSlide(index, updateHash) {
+    currentSlide = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach(function (slide, slideIndex) {
+      slide.classList.toggle('on', slideIndex === currentSlide);
+    });
+
+    counter.textContent =
+      String(currentSlide + 1).padStart(2, '0') +
+      ' / ' +
+      String(slides.length).padStart(2, '0');
+
+    if (updateHash !== false) {
+      try {
+        history.replaceState(null, '', '#slide-' + (currentSlide + 1));
+      } catch (error) {
+        console.error('No se pudo actualizar la diapositiva en la URL.', error);
+      }
+    }
+
+    if (mobileLayout.matches) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function slideFromHash() {
+    var match = /^#slide-(\d+)$/.exec(location.hash);
+    return match ? parseInt(match[1], 10) - 1 : 0;
+  }
+
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('hashchange', function () {
+    showSlide(slideFromHash(), false);
+  });
+  document.getElementById('prev').addEventListener('click', function () {
+    showSlide(currentSlide - 1);
+  });
+  document.getElementById('next').addEventListener('click', function () {
+    showSlide(currentSlide + 1);
+  });
+
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+      event.preventDefault();
+      showSlide(currentSlide + 1);
+    } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+      showSlide(currentSlide - 1);
+    } else if (event.key === 'Home') {
+      showSlide(0);
+    } else if (event.key === 'End') {
+      showSlide(slides.length - 1);
+    } else if (event.key === 'f' || event.key === 'F') {
+      try {
+        document.fullscreenElement
+          ? document.exitFullscreen()
+          : document.documentElement.requestFullscreen();
+      } catch (error) {
+        console.error('No se pudo cambiar el modo de pantalla completa.', error);
+      }
+    }
+  });
+
+  var touchStartX = null;
+  window.addEventListener(
+    'touchstart',
+    function (event) {
+      touchStartX = event.touches[0].clientX;
+    },
+    { passive: true }
+  );
+  window.addEventListener(
+    'touchend',
+    function (event) {
+      if (touchStartX === null) return;
+
+      var distance = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(distance) > 50) {
+        showSlide(currentSlide + (distance < 0 ? 1 : -1));
+      }
+      touchStartX = null;
+    }
+  );
+
+  document.querySelectorAll('.sw').forEach(function (path) {
+    var x = Number(path.dataset.x);
+    var y = Number(path.dataset.y);
+    var width = Number(path.dataset.w);
+    var cycles = Number(path.dataset.c);
+    var amplitude = Number(path.dataset.a);
+    var points = [];
+
+    for (var point = 0; point <= 160; point++) {
+      var angle = (point / 160) * cycles * 2 * Math.PI;
+      var command = point === 0 ? 'M' : 'L';
+      var pointX = (x + (width * point) / 160).toFixed(1);
+      var pointY = (y - amplitude * Math.sin(angle)).toFixed(1);
+      points.push(command + pointX + ' ' + pointY);
+    }
+
+    path.setAttribute('d', points.join(''));
+  });
+
+  function paintPhoto(element, url) {
+    element.style.backgroundImage = 'url(' + url + ')';
+    element.classList.add('has');
+  }
+
+  document.querySelectorAll('.ph').forEach(function (element) {
+    var storageKey = 'foto-' + element.getAttribute('data-k');
+
+    try {
+      var savedPhoto = localStorage.getItem(storageKey);
+      if (savedPhoto) paintPhoto(element, savedPhoto);
+    } catch (error) {
+      console.error('No se pudo leer la foto guardada.', error);
+    }
+
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.style.display = 'none';
+    element.appendChild(input);
+
+    element.addEventListener('click', function (event) {
+      if (event.target !== input) input.click();
+    });
+
+    input.addEventListener('change', function () {
+      var file = input.files[0];
+      if (!file) return;
+
+      var reader = new FileReader();
+      reader.onload = function () {
+        var image = new Image();
+        image.onload = function () {
+          var canvas = document.createElement('canvas');
+          var scale = Math.min(1, 1000 / image.width);
+          canvas.width = image.width * scale;
+          canvas.height = image.height * scale;
+          canvas
+            .getContext('2d')
+            .drawImage(image, 0, 0, canvas.width, canvas.height);
+
+          var url = canvas.toDataURL('image/jpeg', 0.82);
+          paintPhoto(element, url);
+          try {
+            localStorage.setItem(storageKey, url);
+          } catch (error) {
+            console.error('No se pudo guardar la foto en este navegador.', error);
+          }
+        };
+        image.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  fitStage();
+  showSlide(slideFromHash());
+})();
+
+</script>
+</body>
+</html>
